@@ -29,6 +29,8 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 - /watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 - /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
 - /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+#### Example
+- /watermarkaddaudio https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3
 
 ### List File Thumbnail on Server
 - /thumbnaildelete
