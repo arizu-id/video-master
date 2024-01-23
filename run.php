@@ -3,10 +3,11 @@
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
+cls_force();
+sM("[+] Starting BOT..");
 if($token == false){
     sM("[!] Failed to verify Telegram Bot Token..");
-}else{
-    sM("[+] Token : $token");
+}else{    
     define('BOT_TOKEN', $token);
     sM("[+] BOT Connected..");
     checkDir();
