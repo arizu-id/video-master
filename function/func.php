@@ -45,6 +45,9 @@ function checkDir(){
     if(!is_dir("tmp")){
         mkdir("tmp");
     }
+    if(!is_dir("tmp2")){
+        mkdir("tmp2");
+    }
     if(!is_dir("render")){
         mkdir("render");
     }
