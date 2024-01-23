@@ -23,4 +23,23 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 - php receiver.php<br/>
 
 # Command List
-coming soon
+/download [url]
+
+Watermark Module
+/watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
+/watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
+/watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+
+List File Thumbnail on Server
+/thumbnaildelete
+/thumbnaillist
+/thumbnailsave [url] [filename]
+/thumbnailsend [filename]
+
+List File Audio on Server
+/audiodelete [filename]
+/audiolist
+/audiosave [url] [filename]
+/audiosend [filename]
+/audioyt [url] [filename]
