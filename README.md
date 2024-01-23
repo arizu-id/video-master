@@ -17,10 +17,9 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 3. add to environment path -> YOUR_FFMPEG_FOLDER_LOCATION/bin/
 
 # How to Install Downloader
-- git clone https://github.com/arizustudio/Facebook-Youtube-Downloader-for-Telegram-BOT.git<br/>
-- cd Facebook-Youtube-Downloader-for-Telegram-BOT<br/>
-// edit telegtam_bot_token.txt to your telegram bot token
-- php receiver.php<br/>
+- git clone https://github.com/arizu-id/video-master.git videomaster<br/>
+- cd videomaster<br/>
+- php run.php<br/>
 
 # Command List
 - /download [url]
