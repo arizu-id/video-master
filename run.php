@@ -34,29 +34,8 @@ if($token == false){
                             sM("[REPLY] To : $chatId -> (help)");
                             sendMessage($chatId, $messageId, helpMessage());	
                         }else
-                        if($commandName == 'download'){
-                            include "command/download.php";
-                        }else
-                        if($commandName == 'thumbnailsave'){
-                            include "command/thumbnailsave.php";
-                        }else
-                        if($commandName == 'thumbnailsend'){
-                            include "command/thumbnailsend.php";
-                        }else
-                        if($commandName == 'thumbnaillist'){
-                            include "command/thumbnaillist.php";
-                        }else
-                        if($commandName == 'audiosave'){
-                            include "command/audiosave.php";
-                        }else
-                        if($commandName == 'audioyt'){
-                            include "command/audioyt.php";
-                        }else
-                        if($commandName == 'audiolist'){
-                            include "command/audiolist.php";
-                        }else
-                        if($commandName == 'audiosend'){
-                            include "command/audiosend.php";
+                        if(file_exists("command/$commandName.php")){
+                            include "command/$commandName.php";
                         }else{
                             $respon = "Command not found, try typing /help";
 					        sM("[REPLY] To : $chatId -> $respon");

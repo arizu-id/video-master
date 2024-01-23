@@ -3,7 +3,8 @@ $filenya = "";
 if ($handle = opendir('files/images/')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
-$filenya .= "$entry
+            $ukuran = formatFileSize("files/images/$entry");
+$filenya .= "$entry ($ukuran)
 ";
         }
     }

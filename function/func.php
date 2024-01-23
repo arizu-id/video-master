@@ -126,25 +126,40 @@ function getMessage2($terbaru){
     curl_close($ch);
     return $response;
 }
-function addBacksound($video,$audio,$volume,$output){
-	if(file_exists("temps/$video")){
-		echo shell_exec('ffmpeg -i temps/'.$video.' -i '.$audio.' -filter_complex "[1:0]volume='.$volume.'[a1];[0:a][a1]amix=inputs=2:duration=first" -map 0:v:0 -y temps/'.$output.'.mp4');
-	}else{
-		return false;
-	}
+function formatFileSize($filename) {
+    $size = filesize($filename);
+
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+    $formattedSize = $size;
+
+    for ($i = 0; $size >= 1024 && $i < count($units) - 1; $i++) {
+        $size /= 1024;
+        $formattedSize = round($size, 2);
+    }
+
+    return $formattedSize . ' ' . $units[$i];
 }
+
 function helpMessage(){
 $pesan = "Auto Download & Editing Videos
 /download [url]
 
+Watermark Module
+/watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
+/watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
+/watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+
 Thumbnail on Server
-/thumbnailsave [url] [filename]
+/thumbnaildelete
 /thumbnaillist
-thumbnailsend [filename]
+/thumbnailsave [url] [filename]
+/thumbnailsend [filename]
 
 Audio on Server
-/audiosave [url] [filename]
 /audiolist
+/audiodelete [filename]
+/audiosave [url] [filename]
 /audiosend [filename]
 /audioyt [url] [filename]";
     return $pesan;
