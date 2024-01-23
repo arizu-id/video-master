@@ -150,15 +150,15 @@ Watermark Module
 /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 
-Thumbnail on Server
+List File Thumbnail on Server
 /thumbnaildelete
 /thumbnaillist
 /thumbnailsave [url] [filename]
 /thumbnailsend [filename]
 
-Audio on Server
-/audiolist
+List File Audio on Server
 /audiodelete [filename]
+/audiolist
 /audiosave [url] [filename]
 /audiosend [filename]
 /audioyt [url] [filename]";

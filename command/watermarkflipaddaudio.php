@@ -12,6 +12,26 @@ if(!$url_video or !$opacity or !$size or !$position_y or !$position_x or !$image
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }else
+if($opacity < 0 or $opacity > 1){
+    $respon = "The range for opacity is 0-1, example : 0.75";
+    sM("[REPLY] To : $chatId -> $respon");
+    sendMessage($chatId, $messageId, $respon);
+}else
+if($position_y < 1 or $position_y > 10){
+    $respon = "The range for position y 1-10, example : 2";
+    sM("[REPLY] To : $chatId -> $respon");
+    sendMessage($chatId, $messageId, $respon);
+}else
+if($position_x < 1 or $position_x > 10){
+    $respon = "The range for position x 1-10, example : 2";
+    sM("[REPLY] To : $chatId -> $respon");
+    sendMessage($chatId, $messageId, $respon);
+}else
+if($volume < 0 or $volume > 1){
+    $respon = "The range for backsound volume is 0-1, example : 0.25";
+    sM("[REPLY] To : $chatId -> $respon");
+    sendMessage($chatId, $messageId, $respon);
+}else
 if(!file_exists("files/images/$images")){
     $respon = "Thumbnail not found, try typing /thumbnaillist";
     sM("[REPLY] To : $chatId -> $respon");
