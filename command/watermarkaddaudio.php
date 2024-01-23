@@ -64,6 +64,8 @@ if(!file_exists("files/audio/$audio")){
                 sM("Sending..");
                 if(sendStream($chatId, $messageId, "render/$filename") == true){
                     sM("[REPLY] To : $chatId -> (video_file)");
+                    copy("render/$filename", "files/video/$filename");
+                    sendMessage($chatId, $messageId, "saved on server as $filename");
                     if(unlink("render/$filename")){
                         sM("[!] Video File Deleted");
                     }else{

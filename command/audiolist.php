@@ -14,7 +14,7 @@ if(!isset($filenya) or $filenya != ""){
     sM("[REPLY] To : $chatId -> (list audio)");
     sendMessage($chatId, $messageId, $filenya);
 }else{
-    $filenya = "no audio found";
+    $respon = "no audio found";
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }

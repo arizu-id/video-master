@@ -14,7 +14,7 @@ if(!isset($filenya) or $filenya != ""){
     sM("[REPLY] To : $chatId -> (list images)");
     sendMessage($chatId, $messageId, $filenya);
 }else{
-    $filenya = "no images found";
+    $respon = "no images found";
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }
