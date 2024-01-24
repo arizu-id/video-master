@@ -61,7 +61,7 @@ if(!file_exists("files/audio/$audio")){
         shell_exec('ffmpeg -i tmp/'.$filename.' -i files/audio/'.$audio.' -filter_complex "[1:0]volume='.$volume.'[a1];[0:a][a1]amix=inputs=2;hflip" -c:v libx264 -tune stillimage -c:a mp3 -b:a 192k -pix_fmt yuv420p -shortest -map 0:v:0 tmp2/'.$filename);
         if(file_exists("tmp2/$filename")){
             sM("Add Watermark..");
-            shell_exec('ffmpeg -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
+            shell_exec('ffmpeg -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" tmp3/'.$filename);
             if(file_exists("tmp3/$filename")){
                 shell_exec('ffmpeg -i tmp3/'.$filename.' -filter_complex "[0]pad=w='.$borderSize.'+iw:h='.$borderSize.'+ih:x='.$borderSize.'/2:y='.$borderSize.'/2:color='.$borderColor.'" render/'.$filename);
                 if(file_exists("render/$filename")){
