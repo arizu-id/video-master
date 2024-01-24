@@ -44,19 +44,33 @@ if(!file_exists("files/images/$images")){
     if(downloadFiles($gabol['url'],"tmp/$filename") == true){
         sM("Download Success -> tmp/$filename");
         sM("Editing..");
-        shell_exec('ffmpeg -i tmp/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.',hflip" render/'.$filename);
-        if(file_exists("render/$filename")){
-            sM("Sending..");
-            if(sendStream($chatId, $messageId, "render/$filename") == true){
-                sM("[REPLY] To : $chatId -> (video_file)");
+        //shell_exec('ffmpeg -i tmp/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.',hflip" render/'.$filename);
+        shell_exec('ffmpeg -i tmp/'.$filename.' -filter_complex "hflip" tmp2/'.$filename);
+        if(file_exists("tmp2/$filename")){
+            sM("Add Watermark..");
+            shell_exec('ffmpeg -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
+            if(file_exists("render/$filename")){
+                sM("Sending..");
+                if(sendStream($chatId, $messageId, "render/$filename") == true){
+                   sM("[REPLY] To : $chatId -> (video_file)");
+                }else{
+                    $respon = "Failed to send video!";
+                    sM("[REPLY] To : $chatId -> $respon");
+                    sendMessage($chatId, $messageId, $respon);
+                }
+                copy("render/$filename", "files/video/$filename");
+                sendMessage($chatId, $messageId, "saved on server as $filename");
+                if(unlink("render/$filename")){
+                    sM("[!] Video File Deleted");
+                }else{
+                    sM("[!] Failed to Delete Video File");
+               }
             }else{
-                $respon = "Failed to send video!";
+                $respon = "Failed to editing video! (err: 2)";
                 sM("[REPLY] To : $chatId -> $respon");
                 sendMessage($chatId, $messageId, $respon);
             }
-            copy("render/$filename", "files/video/$filename");
-            sendMessage($chatId, $messageId, "saved on server as $filename");
-            if(unlink("render/$filename")){
+            if(unlink("tmp2/$filename")){
                 sM("[!] Video File Deleted");
             }else{
                 sM("[!] Failed to Delete Audio File");

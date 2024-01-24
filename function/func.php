@@ -54,6 +54,15 @@ function checkDir(){
     if(!is_dir("render")){
         mkdir("render");
     }
+    if(!is_dir("files/audio")){
+        mkdir("files/audio");
+    }
+    if(!is_dir("files/images")){
+        mkdir("files/images");
+    }
+    if(!is_dir("files/video")){
+        mkdir("files/video");
+    }
     if(!file_exists("terbaru.txt")){
         file_put_contents("terbaru.txt","0  ");
     }
@@ -130,6 +139,18 @@ function downloadFiles($url,$file){
 		file_put_contents($file, $fileContent);
 		return true;
 	}
+}
+function getMessageLatest(){
+	$uri = "https://api.telegram.org/bot" . BOT_TOKEN . "/getUpdates";
+	$ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $uri);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
 }
 function getMessage2($terbaru){
 	$uri = "https://api.telegram.org/bot" . BOT_TOKEN . "/getUpdates?offset=$terbaru";

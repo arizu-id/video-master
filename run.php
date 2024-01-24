@@ -4,6 +4,20 @@ include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
 cls_force();
+setup:
+if(!file_exists("configuration.ini")){
+    echo "[?] Enter your BOT Token : ";
+    $inputToken = trim(fgets(STDIN));
+    if(checkBot($inputToken) == true){
+        $saveToken = array();
+        $saveToken['bot_token'] = $inputToken;
+        file_put_contents("configuration.ini",json_encode($saveToken));
+        sM("[+] Configuration File has been created..");
+        $token = $inputToken;
+    }else{
+        sM("[!] Invalid BOT Token");
+    }
+}
 sM("[+] Starting BOT..");
 if($token == false){
     sM("[!] Failed to verify Telegram Bot Token..");
@@ -11,8 +25,26 @@ if($token == false){
     define('BOT_TOKEN', $token);
     sM("[+] BOT Connected..");
     checkDir();
+    $latestMessage = getMessageLatest();
+    if ($latestMessage === false) {
+        file_put_contents('terbaru.txt','0');
+    }else{
+        $latestMessageData = json_decode($latestMessage, true);
+        if ($latestMessageData['ok']) {
+            $updateLatest = $latestMessageData['result'];
+            if(count($latestMessageData['result']) > 1){
+                file_put_contents('terbaru.txt',end($updateLatest)['update_id']);
+            }else{
+                file_put_contents('terbaru.txt','0');
+            }
+        }else{
+            file_put_contents('terbaru.txt','0');
+        }
+    }
+    sM("[+] Starting executing command..");
     start:
     $terbaru = file_get_contents('terbaru.txt');
+    //$terbaru = $terbaru+1;
     $update = json_decode(getMessage2($terbaru+1),true);
     if ($update['ok'] == true) {
         if(isset($update['result'][0]['update_id'])){
@@ -51,12 +83,13 @@ if($token == false){
                 file_put_contents('terbaru.txt',$update_id);
                 goto start;
             }else{
-                sM("[!]No New Message..");
+                //sM("[!]No New Message..");
                 sleep(1);
                 goto start;
             }
             sM("===============================================================================");
         }else{
+            //sM("[!]No New Message at $terbaru..");
             sleep(1);
             goto start;
         }
