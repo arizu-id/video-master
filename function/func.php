@@ -165,10 +165,10 @@ $pesan = "Auto Download & Editing Videos
 Watermark Module
 /watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderX] [borderY]
+/watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
 /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderX] [borderY]
+/watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
 
 List Video Saved on Server
 /storage
