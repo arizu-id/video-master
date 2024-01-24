@@ -30,6 +30,7 @@ if(!file_exists("files/images/$images")){
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }else{
+    $position_y = 10-$position_y;
     $respon = "Proses..";
     $filename = "videos_".rand(1000,9999)."_".strtotime("now").".mp4";
     $req = getVideo($url_video);
