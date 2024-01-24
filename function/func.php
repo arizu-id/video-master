@@ -48,6 +48,9 @@ function checkDir(){
     if(!is_dir("tmp2")){
         mkdir("tmp2");
     }
+    if(!is_dir("tmp3")){
+        mkdir("tmp3");
+    }
     if(!is_dir("render")){
         mkdir("render");
     }
@@ -157,12 +160,15 @@ function formatFileSize($filename) {
 function helpMessage(){
 $pesan = "Auto Download & Editing Videos
 /download [url]
+/flip [url]
 
 Watermark Module
 /watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderX] [borderY]
 /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderX] [borderY]
 
 List Video Saved on Server
 /storage
