@@ -1,4 +1,10 @@
+<h2 align="center">We present a tool with very useful functions to help your work</h2>
+Video Master is a tool that helps you speed up the time for editing a video, generally if you edit a video from collecting materials or assets to the rendering stage it takes 5-10 minutes at the fastest. However, with this tool you only need 2-5 minutes (depending on your server specifications).
+
 ![Screenshot](files/vdmaster.jpg)
+# Recommended Specifications
+- 4 Core vCPU
+- 8 GB RAM
 # System Requirements
 - Requires PHP7 or more<br/>
 install in centOS / Almalinux
@@ -14,8 +20,7 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 
 # Install FFMpeg binaries in Linux
 ```
-git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
-cd ffmpeg
+git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg && cd ffmpeg
 ./configure
 make
 make install
