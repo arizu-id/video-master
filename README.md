@@ -23,6 +23,7 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 - php run.php<br/>
 
 # Command List
+![Screenshot](files/test.jpg)
 - /download [url]
 - /flip [url]
 ### Watermark Module
