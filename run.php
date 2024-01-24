@@ -52,12 +52,12 @@ if($token == false){
                 goto start;
             }else{
                 sM("[!]No New Message..");
-                sleep(0.75);
+                sleep(1);
                 goto start;
             }
             sM("===============================================================================");
         }else{
-            sleep(0.75);
+            sleep(1);
             goto start;
         }
     }else{
