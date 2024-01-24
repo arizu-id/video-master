@@ -22,14 +22,6 @@ If you want to use the auto matermark & flip mirror video feature, you need bina
 - cd videomaster<br/>
 - php run.php<br/>
 
-# Configuration.ini File
-Add configuration for bot Telegram token heres the code
-```
-{
-    "bot_token" : "xxxxxxxxxxxxxx"
-}
-```
-
 # Command List
 ![Screenshot](files/test.jpg)
 - /download [url]
