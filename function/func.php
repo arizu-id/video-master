@@ -51,6 +51,12 @@ function checkDir(){
     if(!is_dir("tmp3")){
         mkdir("tmp3");
     }
+    if(!is_dir("tmp4")){
+        mkdir("tmp4");
+    }
+    if(!is_dir("tmp5")){
+        mkdir("tmp5");
+    }
     if(!is_dir("render")){
         mkdir("render");
     }
@@ -187,9 +193,11 @@ Watermark Module
 /watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 /watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
+/watermarkchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
 /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 /watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
+/watermarkflipchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 
 List Video Saved on Server
 /storage
