@@ -44,76 +44,41 @@ php run.php<br/>
 ![Screenshot](files/test.jpg)
 ```
 /download [url]
-```
-```
 /flip [url]
 ```
 ### Auto Editing With Watermark Module
 ```
 /watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
-```
-```
 /watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-```
-```
 /watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-```
-```
+/watermarkchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 /watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
-```
-```
 /watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-```
-```
 /watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-```
-### Auto Editing With Watermark Module
-```
-(coming soon) /addaudio [url_video] [audio] [volume]
-```
-```
-(coming soon) /changeaudio [url_video] [audio] [volume]
+/watermarkflipchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
 ```
 #### Example
 ```
 /watermarkaddaudio https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3
-```
-```
 /watermarkaddaudioborder https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3 green 25
 ```
 #### List Video Saved on Server
 ```
 /storage
-```
-```
 /storageclean
 ```
 ### List File Thumbnail on Server
 ```
 /thumbnaildelete
-```
-```
 /thumbnaillist
-```
-```
 /thumbnailsave [url] [filename]
-```
-```
 /thumbnailsend [filename]
 ```
 ### List File Audio on Server
 ```
 /audiodelete [filename]
-```
-```
 /audiolist
-```
-```
 /audiosave [url] [filename]
-```
-```
 /audiosend [filename]
-```
-```
 /audioyt [url] [filename]
 ```
