@@ -35,9 +35,8 @@ add to environment path -> YOUR_FFMPEG_FOLDER_LOCATION/bin/
 
 # How to Install Video Master
 ```
-git clone https://github.com/arizu-id/video-master.git videomaster<br/>
-cd videomaster<br/>
-php run.php<br/>
+git clone https://github.com/arizu-id/video-master.git videomaster && cd videomaster
+php run.php
 ```
 
 # Command List
