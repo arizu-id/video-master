@@ -202,6 +202,7 @@ Watermark Module
 List Video Saved on Server
 /storage
 /storageclean
+/storagesend [filename]
 
 List File Thumbnail on Server
 /thumbnaildelete
