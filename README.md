@@ -61,11 +61,13 @@ php run.php<br/>
 ```
 /watermarkaddaudio https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3
 /watermarkaddaudioborder https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3 green 25
+/watermarkflipchangeaudio https://www.instagram.com/p/CzBsd_btWAZ/ 0.4 250 2 2 pwlogo.png waw.mp3 0.75
 ```
 #### List Video Saved on Server
 ```
 /storage
 /storageclean
+/storagesend [filename]
 ```
 ### List File Thumbnail on Server
 ```
