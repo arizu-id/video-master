@@ -35,9 +35,8 @@ add to environment path -> YOUR_FFMPEG_FOLDER_LOCATION/bin/
 
 # How to Install Video Master
 ```
-git clone https://github.com/arizu-id/video-master.git videomaster<br/>
-cd videomaster<br/>
-php run.php<br/>
+git clone https://github.com/arizu-id/video-master.git videomaster && cd videomaster
+php run.php
 ```
 
 # Command List
@@ -61,11 +60,13 @@ php run.php<br/>
 ```
 /watermarkaddaudio https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3
 /watermarkaddaudioborder https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3 green 25
+/watermarkflipchangeaudio https://www.instagram.com/p/CzBsd_btWAZ/ 0.4 250 2 2 pwlogo.png waw.mp3 0.75
 ```
 #### List Video Saved on Server
 ```
 /storage
 /storageclean
+/storagesend [filename]
 ```
 ### List File Thumbnail on Server
 ```
