@@ -183,7 +183,14 @@ function formatFileSize($filename) {
 
     return $formattedSize . ' ' . $units[$i];
 }
+function welcomeMessage(){
+$pesan = "Welcome to Video Master, Video Master is a tool that helps you speed up the time for editing a video, generally if you edit a video from collecting materials or assets to the rendering stage it takes 5-10 minutes at the fastest. However, with this tool you only need 2-5 minutes (depending on your server specifications).
 
+By using this tool you agree not to involve the developer (Arizu Studio) in any form of copyright claims for anything done by the user.
+
+To start using the bot you can type /help to see the commands.";
+return $pesan;
+}
 function helpMessage(){
 $pesan = "Auto Download & Editing Videos
 /download [url]

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
@@ -63,7 +63,11 @@ if($token == false){
                         $commandName = $commandMatches[1];
                         $commandArguments = isset($commandMatches[3]) ? $commandMatches[3] : '';					
                         $isiPerintah = explode(' ',$commandArguments);
-                        if($commandName == 'start' or $commandName == 'help'){
+                        if($commandName == 'start'){
+                            sM("[REPLY] To : $chatId -> (welcome message)");
+                            sendMessage($chatId, $messageId, welcomeMessage());	
+                        }else
+                        if($commandName == 'help'){
                             sM("[REPLY] To : $chatId -> (help)");
                             sendMessage($chatId, $messageId, helpMessage());	
                         }else

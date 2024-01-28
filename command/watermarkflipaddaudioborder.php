@@ -24,8 +24,8 @@ if($position_y < 1 or $position_y > 10){
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }else
-if($position_x < 1 or $position_x > 10){
-    $respon = "The range for position x 1-10, example : 2";
+if($position_x < 1 or $position_x > 10000){
+    $respon = "The range for position x 1-10000, example : 2";
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }else
