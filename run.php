@@ -26,6 +26,9 @@ if($token == false){
     sM("[+] BOT Connected..");
     checkDir();
     $latestMessage = getMessageLatest();
+    if(!file_exists('terbaru.txt')){
+        file_put_contents('terbaru.txt','0');
+    }
     if ($latestMessage === false) {
         file_put_contents('terbaru.txt','0');
     }else{
