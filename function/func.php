@@ -197,14 +197,21 @@ $pesan = "Auto Download & Editing Videos
 /flip [url]
 
 Watermark Module
-/watermark [url_video] [opacity] [size] [position_y] [position_x] [images]
-/watermarkaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/watermarkaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-/watermarkchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/watermarkflip [url_video] [opacity] [size] [position_y] [position_x] [images]
-/watermarkflipaddaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/watermarkflipaddaudioborder [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-/watermarkflipchangeaudio [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/wm [url_video] [opacity] [size] [position_y] [position_x] [images]
+/wma [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/wma_border [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
+/wm_ca [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/wmf [url_video] [opacity] [size] [position_y] [position_x] [images]
+/wmfa [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+/wmfa_border [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
+/wmf_ca [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
+
+Preset Module
+/preset [name] [INPUT_1] [INPUT_2] [INPUT_3] [INPUT_4]
+/preset_sv [name] [command]
+/preset_all
+/preset_send [name]
+/preset_del [name]
 
 List Video Saved on Server
 /storage

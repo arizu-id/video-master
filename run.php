@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
@@ -63,6 +63,8 @@ if($token == false){
                         $commandName = $commandMatches[1];
                         $commandArguments = isset($commandMatches[3]) ? $commandMatches[3] : '';					
                         $isiPerintah = explode(' ',$commandArguments);
+                        $commandName2 = explode(' ',$commandName);
+                        $commandName = $commandName2[0];
                         if($commandName == 'start'){
                             sM("[REPLY] To : $chatId -> (welcome message)");
                             sendMessage($chatId, $messageId, welcomeMessage());	
@@ -74,12 +76,12 @@ if($token == false){
                         if(file_exists("command/$commandName.php")){
                             include "command/$commandName.php";
                         }else{
-                            $respon = "Command not found, try typing /help";
+                            $respon = "Command file /$commandName not found, try typing /help";
 					        sM("[REPLY] To : $chatId -> $respon");
 					        sendMessage($chatId, $messageId, $respon);
                         }
                     }else{
-                        $respon = "Command not found, try typing /help";
+                        $respon = "Command /$commandName not found, try typing /help";
 					    sM("[REPLY] To : $chatId -> $respon");
 					    sendMessage($chatId, $messageId, $respon);
                     }
