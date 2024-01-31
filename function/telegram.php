@@ -25,7 +25,8 @@ function sendMessage($chatId, $messageId, $message){
         'chat_id' => $chatId,
         'text' => $message,
         'reply_to_message_id' => $messageId,
-        'disable_notification' => true
+        'disable_notification' => true,
+        'parse_mode' => "markdown"
     ];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);

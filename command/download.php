@@ -21,7 +21,8 @@ if(!$url_videos){
             sM("[REPLY] To : $chatId -> $respon");;
             sendMessage($chatId, $messageId, $respon);
         }
-        
+        copy("tmp/$filename", "files/video/$filename");
+        sendMessage($chatId, $messageId, "saved on server as `$filename`");
     }else{
         $respon = "Server tidak dapat mengunduh video!";
         sM("[REPLY] To : $chatId -> $respon");

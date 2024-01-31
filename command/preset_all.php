@@ -4,7 +4,7 @@ if ($handle = opendir('files/prompt/')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
             $entry = str_replace('.txt','',$entry);
-$filenya .= "$entry
+$filenya .= "`$entry`
 ";
         }
     }

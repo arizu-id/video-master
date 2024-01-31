@@ -1,4 +1,6 @@
 configuration.ini
+facebook_app.ini
+data/fb_page/
 files/audio/
 files/video/
 files/images/

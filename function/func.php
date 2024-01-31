@@ -69,8 +69,14 @@ function checkDir(){
     if(!is_dir("files/video")){
         mkdir("files/video");
     }
+    if(!is_dir("data")){
+        mkdir("data");
+    }
+    if(!is_dir("data/fb_page")){
+        mkdir("data/fb_page");
+    }
     if(!file_exists("terbaru.txt")){
-        file_put_contents("terbaru.txt","0  ");
+        file_put_contents("terbaru.txt","0");
     }
 }
 function detectCommand($text) {
@@ -212,6 +218,18 @@ Preset Module
 /preset_all
 /preset_send [name]
 /preset_del [name]
+
+Facebook APP Settings
+/fbapp_detail
+/fbapp_set [app_id] [app_secret]
+
+Facebook Page Settings
+/fbapp_pageall
+/fbapp_pageset [name] [token] [page_id]
+/fbapp_pagedel [name]
+
+Auto Post
+/p_fbpage [name] [video] [caption]
 
 List Video Saved on Server
 /storage

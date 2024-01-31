@@ -1,26 +1,27 @@
 <?php
 
-// Token akses untuk halaman Facebook Anda
-$page_access_token = 'EAAFauz9RYLkBO5341BDTYIzLtFDUG8v5TRMk3M2ry5KkTUsfID4h1Sh6CXRj8RBIAgudN9bpSgokqNwBVoZBORVy9e4FUGjNfO3tUS9X1ok5r5Kb3SO3IQ1UJSOgPFs0N5U2JFLLuX5KcV83ZCj2q4wnlKvLF58HwYOW9bNjZBK267uZBOnQg9wGHS3QwMhiHoPKm7BojKRbaRcZD';
+// Informasi autentikasi
+$app_id = '404975825327899';
+$app_secret = '8b0f15166c80591f5684947c7aed18d1';
+$access_token = 'EAAFauz9RYLkBO3gkNhiWWViWuMX95h3brrCKj20widc7XDGgT50JH6PR0ruljkmh5rPEzK1XEWHMpqXuOo33oMpaD0KOMHBpo3TFt6luiVA0G8kZC1zlNSyspFDR03FfWidQiIau4P9lpdndjGDMF4hHheAEX3mficBmkec1nfFfVkyJgIkfMj4bZAIQbU26AMjpfrnXXflkZCdTwhpQqBkL03v0qEZC3D0j8BoZD';
 
-// ID halaman Facebook Anda
+// ID Halaman Facebook Anda
 $page_id = '112445415286581';
 
 // Path ke video yang ingin Anda unggah
 $video_path = '../files/video/videos_6423_1706580174.mp4';
 
 // Pesan yang ingin Anda tambahkan ke posting
-$message = 'Jadi ngeri ya guys';
+$message = 'Serem ya guys';
 
 // URL endpoint untuk mengunggah video
-$url = "https://graph-video.facebook.com/{$page_id}/videos";
-//$url = "https://graph.facebook.com/v18.0/$page_id/videos";
+$url = "https://graph.facebook.com/v18.0/{$page_id}/videos";
+
 // Parameter yang diperlukan untuk mengunggah video
 $params = array(
-    'title' => 'Kok Bisa Ada Ada Disitu Guys?',
+    'access_token' => $access_token,
     'description' => $message,
-    'access_token' => $page_access_token,
-    'source' => '@' . realpath($video_path)
+    'source' => new CURLFile($video_path)
 );
 
 // Inisialisasi cURL
