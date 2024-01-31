@@ -81,6 +81,10 @@ php run.php
 /fbapp_pageset [name] [token] [page_id]
 /fbapp_pagedel [name]
 ```
+#### Auto Post
+```
+/p_fbpage [PageApp] [video] [caption]
+```
 #### List Video Saved on Server
 ```
 /storage
