@@ -253,7 +253,7 @@ Facebook Page Settings
 /fbapp_pagedel [name]
 
 Auto Post
-/p_fbpage [PageApp] [video] [caption]
+/p_fp [PageApp] [video] [caption]
 
 List Video Saved on Server
 /storage
