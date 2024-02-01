@@ -22,6 +22,24 @@ function checkBot($token){
         return false;
     }
 }
+function random_chars($length){
+	$data = 'abcdefghijklmnopqrstuvwxyz1234567890';
+	$string = '';
+	for($i = 0; $i < $length; $i++) {
+		$pos = rand(0, strlen($data)-1);
+		$string .= $data[$pos];
+	}
+	return $string;
+}
+function random_num($length){
+	$data = '1234567890';
+	$string = '';
+	for($i = 0; $i < $length; $i++) {
+		$pos = rand(0, strlen($data)-1);
+		$string .= $data[$pos];
+	}
+	return $string;
+}
 function getToken($file){
     if(file_exists($file)){
         $botToken = json_decode(trim(file_get_contents($file)),true);
@@ -74,6 +92,9 @@ function checkDir(){
     }
     if(!is_dir("data")){
         mkdir("data");
+    }
+    if(!is_dir("user")){
+        mkdir("user");
     }
     if(!is_dir("data/fb_page")){
         mkdir("data/fb_page");
@@ -197,7 +218,7 @@ $pesan = "Welcome to Video Master, Video Master is a tool that helps you speed u
 
 By using this tool you agree not to involve the developer (Arizu Studio) in any form of copyright claims for anything done by the user.
 
-To start using the bot you can type /help to see the commands.";
+To start using the bot you must register, please type /register [server_key]";
 return $pesan;
 }
 function helpMessage(){

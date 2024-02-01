@@ -27,6 +27,12 @@ if($token == false){
     sM("[+] BOT Connected..");
     checkDir();
     $latestMessage = getMessageLatest();
+    if(!file_exists('key.ini')){
+        $mykey = random_num(6);
+        file_put_contents('key.ini',$mykey);
+        sM("[+] Server secret key generated..");
+        sM("[+] Server Key : $mykey");
+    }
     if(!file_exists('terbaru.txt')){
         file_put_contents('terbaru.txt','0');
     }
@@ -60,6 +66,7 @@ if($token == false){
                     $chatId = $pesan['message']['chat']['id'];
                     $messageId = $pesan['message']['message_id'];
                     $username = $pesan['message']['chat']['username'];
+                    $userid = $pesan['message']['from']['id'];
                     sM("[Message] From : $chatId ($username) -> $message");
                     $message = str_replace('  ',' ',$message);
 				    $commandMatches = detectCommand($message);
@@ -72,6 +79,36 @@ if($token == false){
                         if($commandName == 'start'){
                             sM("[REPLY] To : $chatId -> (welcome message)");
                             sendMessage2($chatId, $messageId, welcomeMessage());	
+                        }else
+                        if($commandName == 'register'){
+                            $datakey = trim(file_get_contents('key.ini'));
+                            $addkey = $isiPerintah[0];
+                            if(file_exists("user/$userid")){
+                                $respon = "You're already registered";
+                                sM("[REPLY] To : $chatId -> $respon");
+                                sendMessage2($chatId, $messageId, $respon);
+                            }else
+                            if(!$addkey){
+                                $respon = "Please insert Server Key, run /register [server_key]";
+                                sM("[REPLY] To : $chatId -> $respon");
+                                sendMessage2($chatId, $messageId, $respon);
+                            }else
+                            if($addkey == "$datakey"){
+                                file_put_contents("user/$userid",$userid);
+                                $respon = "Register success, now you can use this bot! type /help to view all commands";
+                                sM("[REPLY] To : $chatId -> $respon");
+                                sendMessage2($chatId, $messageId, $respon);
+                            }else{
+                                $respon = "Invalid secret key";
+                                sM("[REPLY] To : $chatId -> $respon");
+                                sendMessage2($chatId, $messageId, $respon);
+                            }	
+                            $addkey = 0;
+                        }else
+                        if(!file_exists("user/$userid")){
+                            $respon = "You're not authorized, please register! run /register [server_key]";
+                            sM("[REPLY] To : $chatId -> $respon");
+                            sendMessage2($chatId, $messageId, $respon);
                         }else
                         if($commandName == 'help'){
                             sM("[REPLY] To : $chatId -> (help)");

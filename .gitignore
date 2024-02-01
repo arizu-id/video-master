@@ -1,5 +1,6 @@
 configuration.ini
 facebook_app.ini
+key.ini
 data/fb_page/
 files/audio/
 files/video/
@@ -9,3 +10,4 @@ tmp/
 tmp2/
 tmp3/
 render/
+user/
