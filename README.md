@@ -70,14 +70,13 @@ php run.php
 /preset_send [name]
 /preset_del [name]
 ```
-#### Preset Commands Example
 Add New Preset
 ```
 /preset_sv testpreset /wma [INPUT_1] 0.75 350 8 2 pwlogo.png [INPUT_2] 0.3
 ```
 Run Preset
 ```
-/preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l waw.mp3
+/preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l pwlogo.png waw.mp3
 ```
 ## Facebook APP Settings
 ```
