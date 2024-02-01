@@ -110,9 +110,16 @@ if($token == false){
                             sM("[REPLY] To : $chatId -> $respon");
                             sendMessage2($chatId, $messageId, $respon);
                         }else
-                        if(!file_exists("code")){
+                        if($commandName == 'code'){
                             $datakey = trim(file_get_contents('key.ini'));
                             $respon = "Server key : $datakey";
+                            sM("[REPLY] To : $chatId -> $respon");
+                            sendMessage2($chatId, $messageId, $respon);
+                        }else
+                        if($commandName == 'recode'){
+                            $mykey2 = random_num(6);
+                            file_put_contents('key.ini',$mykey2);
+                            $respon = "New Server key : $mykey2";
                             sM("[REPLY] To : $chatId -> $respon");
                             sendMessage2($chatId, $messageId, $respon);
                         }else
