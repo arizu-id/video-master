@@ -77,7 +77,7 @@ Add New Preset
 ```
 Run Preset
 ```
-/preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l pwlogo.png waw.mp3
+/preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l waw.mp3
 ```
 ## Facebook APP Settings
 ```
