@@ -1,0 +1,2 @@
+from tiktok_uploader.upload import upload_video, upload_videos
+upload_video('../files/video/videos2814_1706751114.mp4','duar #fyp','../data/tiktok_cookies/baju.txt',comment=True, stitch=True, duet=True, headless=False,browser='firefox')

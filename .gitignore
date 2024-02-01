@@ -2,6 +2,7 @@ configuration.ini
 facebook_app.ini
 key.ini
 data/fb_page/
+modules/
 files/audio/
 files/video/
 files/images/

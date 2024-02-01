@@ -255,6 +255,12 @@ Facebook Page Settings
 /fbapp_pageset [name] [token] [page_id]
 /fbapp_pagedel [name]
 
+TikTok
+/tt [name] [video]
+/tt_list
+/tt_get
+/tt_save [name]
+
 Auto Post
 /p_fp [PageApp] [video] [caption]
 

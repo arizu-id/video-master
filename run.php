@@ -62,7 +62,11 @@ if($token == false){
             if($update_id > $terbaru){
                 sM("[$update_id]=====================================================================");
                 foreach($update['result'] as $pesan){
-                    $message = $pesan['message']['text'];
+                    if(isset($pesan['message']['text'])){
+                        $message = $pesan['message']['text'];
+                    }else{
+                        $message = $pesan['message']['caption'];
+                    }
                     $chatId = $pesan['message']['chat']['id'];
                     $messageId = $pesan['message']['message_id'];
                     $username = $pesan['message']['chat']['username'];

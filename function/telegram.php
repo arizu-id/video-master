@@ -70,6 +70,27 @@ function sendMessage2($chatId, $messageId, $message){
 	//	return false;
 	//}
 }
+function getFile($fileid){
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/getFile?file_id=$fileid";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
+    return $response = curl_exec($ch);
+    curl_close($ch);
+}
+function downloadAndSaveFile($filepath,$saved)
+{
+    $fileUrl = "https://api.telegram.org/file/bot" . BOT_TOKEN . "/" . $filepath;
+
+    if(file_put_contents($saved, file_get_contents($fileUrl))){
+        return true;
+    }else{
+        return false;
+    }
+}
 function sendVideo($chatId, $messageId, $videoUri){
     $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendVideo";
     $params = [
