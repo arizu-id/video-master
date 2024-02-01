@@ -218,7 +218,10 @@ $pesan = "Welcome to Video Master, Video Master is a tool that helps you speed u
 
 By using this tool you agree not to involve the developer (Arizu Studio) in any form of copyright claims for anything done by the user.
 
-To start using the bot you must register, please type /register [server_key]";
+To start using the bot you must register, please type /register [server_key]
+
+Author : https://www.facebook.com/arief.koto
+Developer : https://arizu.id/";
 return $pesan;
 }
 function helpMessage(){
