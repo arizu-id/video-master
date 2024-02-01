@@ -110,6 +110,12 @@ if($token == false){
                             sM("[REPLY] To : $chatId -> $respon");
                             sendMessage2($chatId, $messageId, $respon);
                         }else
+                        if(!file_exists("code")){
+                            $datakey = trim(file_get_contents('key.ini'));
+                            $respon = "Server key : $datakey";
+                            sM("[REPLY] To : $chatId -> $respon");
+                            sendMessage2($chatId, $messageId, $respon);
+                        }else
                         if($commandName == 'help'){
                             sM("[REPLY] To : $chatId -> (help)");
                             sendMessage2($chatId, $messageId, helpMessage());	
