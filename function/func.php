@@ -60,6 +60,9 @@ function checkDir(){
     if(!is_dir("render")){
         mkdir("render");
     }
+    if(!is_dir("files")){
+        mkdir("files");
+    }
     if(!is_dir("files/audio")){
         mkdir("files/audio");
     }

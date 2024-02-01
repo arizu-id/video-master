@@ -71,11 +71,11 @@ if($token == false){
                         $commandName = $commandName2[0];
                         if($commandName == 'start'){
                             sM("[REPLY] To : $chatId -> (welcome message)");
-                            sendMessage($chatId, $messageId, welcomeMessage());	
+                            sendMessage2($chatId, $messageId, welcomeMessage());	
                         }else
                         if($commandName == 'help'){
                             sM("[REPLY] To : $chatId -> (help)");
-                            sendMessage($chatId, $messageId, helpMessage());	
+                            sendMessage2($chatId, $messageId, helpMessage());	
                         }else
                         if(file_exists("command/$commandName.php")){
                             include "command/$commandName.php";

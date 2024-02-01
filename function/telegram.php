@@ -45,6 +45,31 @@ function sendMessage($chatId, $messageId, $message){
 	//	return false;
 	//}
 }
+function sendMessage2($chatId, $messageId, $message){
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendMessage";
+    $params = [
+        'chat_id' => $chatId,
+        'text' => $message,
+        'reply_to_message_id' => $messageId,
+        'disable_notification' => true
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
+    return $response = curl_exec($ch);
+    curl_close($ch);
+    //$update = json_decode($response,true);
+	//if ($update['ok'] == true) {
+	//	return true;
+	//}else{
+	//	return false;
+	//}
+}
 function sendVideo($chatId, $messageId, $videoUri){
     $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendVideo";
     $params = [
