@@ -45,7 +45,7 @@ php run.php
 /download [url]
 /flip [url]
 ```
-### Auto Editing With Watermark Module
+## Auto Editing With Watermark Module
 ```
 /wm [url_video] [opacity] [size] [position_y] [position_x] [images]
 /wma [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
@@ -62,7 +62,7 @@ php run.php
 /wma_border https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l 0.75 350 8 2 pwlogo.png waw.mp3 0.3 green 25
 /wmf_ca https://www.instagram.com/p/CzBsd_btWAZ/ 0.4 250 2 2 pwlogo.png waw.mp3 0.75
 ```
-#### Preset mode to make shortcut commands
+## Preset mode to make shortcut commands
 ```
 /preset [name] [INPUT_1] [INPUT_2] [INPUT_3] [INPUT_4]
 /preset_sv [name] [command]
@@ -70,35 +70,43 @@ php run.php
 /preset_send [name]
 /preset_del [name]
 ```
-#### Facebook APP Settings
+Add New Preset
+```
+/preset_sv testpreset /wma [INPUT_1] 0.75 350 8 2 pwlogo.png [INPUT_2] 0.3
+```
+Run Preset
+```
+/preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l waw.mp3
+```
+## Facebook APP Settings
 ```
 /fbapp_detail
 /fbapp_set [app_id] [app_secret]
 ```
-#### Facebook Page Settings
+## Facebook Page Settings
 ```
 /fbapp_pageall
 /fbapp_pageset [name] [token] [page_id]
 /fbapp_pagedel [name]
 ```
-#### Auto Post
+## Auto Post
 ```
 /p_fbpage [PageApp] [video] [caption]
 ```
-#### List Video Saved on Server
+## List Video Saved on Server
 ```
 /storage
 /storageclean
 /storagesend [filename]
 ```
-### List File Thumbnail on Server
+## List File Thumbnail on Server
 ```
 /thumbnaildelete
 /thumbnaillist
 /thumbnailsave [url] [filename]
 /thumbnailsend [filename]
 ```
-### List File Audio on Server
+## List File Audio on Server
 ```
 /audiodelete [filename]
 /audiolist
