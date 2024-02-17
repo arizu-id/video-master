@@ -2,11 +2,12 @@
 Video Master is a tool that helps you speed up the time for editing a video, generally if you edit a video from collecting materials or assets to the rendering stage it takes 5-10 minutes at the fastest. However, with this tool you only need 2-5 minutes (depending on your server specifications).
 
 ![Screenshot](files/vdmaster.jpg)
-# Recommended Specifications
-- 4 Core vCPU
-- 8 GB RAM
 # System Requirements
-- Requires PHP7 or more<br/>
+- Requires PHP 7 or PHP 8<br/>
+- NodeJS 20<br/>
+- Python 3<br/>
+- FFMpeg binaries<br/>
+### Installing PHP
 install in centOS / Almalinux
 ```
 yum -y install php-cli php php-curl
@@ -15,9 +16,20 @@ install in Debian / Ubuntu
 ```
 sudo apt install php-cli php php-curl
 ```
-- FFMpeg binaries<br/>
-If you want to use the auto matermark & flip mirror video feature, you need binaries from FFMpeg
-
+### Installing NodeJS
+- Windows : <br/>
+https://nodejs.org/en/download
+- For CentOS : <br/>
+https://docs.e2enetworks.com/guides/install_node.js_npm.html
+- Ubuntu/Debian : <br/>
+https://phoenixnap.com/kb/debian-install-nodejs
+### Installing Python 3
+- Windows : <br/>
+https://www.python.org/downloads/
+- For CentOS 7 : <br/>
+https://www.liquidweb.com/kb/how-to-install-python-3-on-centos-7/
+- Ubuntu/Debian : <br/>
+https://phoenixnap.com/kb/how-to-install-python-3-ubuntu
 # Install FFMpeg binaries in Linux
 ```
 git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg && cd ffmpeg
@@ -38,7 +50,12 @@ add to environment path -> YOUR_FFMPEG_FOLDER_LOCATION/bin/
 git clone https://github.com/arizu-id/video-master.git videomaster && cd videomaster
 php run.php
 ```
-
+# How to Install Facebook Reels Uploader
+```
+cd modules/reels-uploader
+npm install
+cd ../../
+```
 # Command List
 ![Screenshot](files/test.jpg)
 ```
@@ -78,20 +95,19 @@ Run Preset
 ```
 /preset testpreset https://www.instagram.com/reel/C2PcFZurlzP/?igsh=ZTViajMzamR1M25l waw.mp3
 ```
-## Facebook APP Settings
+## Facebook Upload Modules
 ```
-/fbapp_detail
-/fbapp_set [app_id] [app_secret]
+/fp
+/fp_save [name]
+/fp_del [name]
+/fp_u [video] [cookies] [caption]
 ```
-## Facebook Page Settings
+## TikTok Upload Modules
 ```
-/fbapp_pageall
-/fbapp_pageset [name] [token] [page_id]
-/fbapp_pagedel [name]
-```
-## Auto Post
-```
-/p_fbpage [PageApp] [video] [caption]
+/tt [name] [video]
+/tt_list
+/tt_get
+/tt_save [name]
 ```
 ## List Video Saved on Server
 ```
@@ -114,3 +130,10 @@ Run Preset
 /audiosend [filename]
 /audioyt [url] [filename]
 ```
+## Credits Tags
+- FFmpeg (https://github.com/FFmpeg)<br/>
+- Ahda (https://github.com/wahdalo)<br/>
+<br/><br/>
+<center>
+  developed and created by Arizu Studio.
+</center>
