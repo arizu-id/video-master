@@ -4,7 +4,7 @@ if ($handle = opendir('files/audio/')) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
             $ukuran = formatFileSize("files/audio/$entry");
-$filenya .= "$entry ($ukuran)
+$filenya .= "`$entry` ($ukuran)
 ";
         }
     }

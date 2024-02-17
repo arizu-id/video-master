@@ -3,7 +3,6 @@
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
-include "function/facebook.php";
 cls_force();
 setup:
 if(!file_exists("configuration.ini")){

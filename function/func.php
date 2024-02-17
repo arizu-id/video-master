@@ -246,23 +246,17 @@ Preset Module
 /preset_send [name]
 /preset_del [name]
 
-Facebook APP Settings
-/fbapp_detail
-/fbapp_set [app_id] [app_secret]
-
-Facebook Page Settings
-/fbapp_pageall
-/fbapp_pageset [name] [token] [page_id]
-/fbapp_pagedel [name]
+Facebook Upload Modules
+/fp
+/fp_save [name]
+/fp_del [name]
+/fp_u [video] [cookies] [caption]
 
 TikTok
 /tt [name] [video]
 /tt_list
 /tt_get
 /tt_save [name]
-
-Auto Post
-/p_fp [PageApp] [video] [caption]
 
 List Video Saved on Server
 /storage
