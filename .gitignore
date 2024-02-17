@@ -1,7 +1,8 @@
 configuration.ini
 facebook_app.ini
 key.ini
-data/
+data/tiktok_cookies/
+data/fb_page/
 modules/reels-uploader/node_modules/
 modules/tiktok-uploader/
 files/audio/

@@ -252,7 +252,7 @@ Facebook Upload Modules
 /fp_del [name]
 /fp_u [video] [cookies] [caption]
 
-TikTok
+TikTok Upload Modules
 /tt [name] [video]
 /tt_list
 /tt_get
