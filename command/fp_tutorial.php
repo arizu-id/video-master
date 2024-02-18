@@ -13,6 +13,6 @@ $respon = "Auto upload to Facebook reels, code by ahda (https://github.com/wahda
 
 6. upload a video with the command /fp_u [video] [cookies] [caption], for example /fp_u video.mp4 myquotesdaily #viral_#unik_#quotes";
 sM("[REPLY] To : $chatId -> $respon");
-sendMessage($chatId, $messageId, $respon);
+sendMessage2($chatId, $messageId, $respon);
 
 ?>
