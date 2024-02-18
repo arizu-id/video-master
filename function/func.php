@@ -247,6 +247,7 @@ Preset Module
 /preset_del [name]
 
 Facebook Upload Modules
+/fp_tutorial
 /fp
 /fp_save [name]
 /fp_del [name]
