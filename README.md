@@ -132,6 +132,7 @@ Run Preset
 ```
 ## Credits Tags
 - FFmpeg (https://github.com/FFmpeg)<br/>
+- Cobalt (https://github.com/wukko/cobalt)<br/>
 - Ahda (https://github.com/wahdalo)<br/>
 <br/><br/>
 <center>
