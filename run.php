@@ -3,6 +3,10 @@
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
+$vga_moda = true;
+if($vga_mode == true){
+    $vga = "-hwaccel cuda";
+}
 cls_force();
 setup:
 if(!file_exists("configuration.ini")){
@@ -82,7 +86,7 @@ if($token == false){
                         curl_setopt($ch123, CURLOPT_ENCODING, 'gzip, deflate');
                         curl_setopt($ch123, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
                         $response123 = curl_exec($ch123);
-                        curl_close($ch);
+                        curl_close($ch123);
                         $updated = json_decode($response123,true);
                         $my_vesion = json_decode(file_get_contents('version.json'),true);
                         if($updated['version_id']>$my_vesion['version_id']){

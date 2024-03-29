@@ -25,7 +25,7 @@ $respon = "Video : `$video`
 Cookies : `$cookies`
 Caption : $caption
 
-If the video fails to upload, there may be an update on Instagram";
+If the video fails to upload, there may be an update on Facebook";
 	sM("[REPLY] To : $chatId -> $respon");
 	sendMessage($chatId, $messageId, $respon);
 }
