@@ -19,11 +19,13 @@ if(!$caption){
 }else{
     $caption = str_replace('_',' ',$caption);
     $cmmds = 'node modules/reels-uploader/upload.js "files/video/'.$video.'" "'.$caption.'" "data/fb_page/'.$cookies.'.txt"';
-    //echo $cmmds.PHP_EOL;
+    echo $cmmds.PHP_EOL;
     shell_exec($cmmds);
 $respon = "Video : `$video`
 Cookies : `$cookies`
-Caption : $caption";
+Caption : $caption
+
+If the video fails to upload, there may be an update on Instagram";
 	sM("[REPLY] To : $chatId -> $respon");
 	sendMessage($chatId, $messageId, $respon);
 }
