@@ -85,7 +85,7 @@ if($token == false){
                         curl_close($ch);
                         $updated = json_decode($response123,true);
                         $my_vesion = json_decode(file_get_contents('version.json'),true);
-                        if($updated['version_id']>=$my_vesion['version_id']){
+                        if($updated['version_id']>$my_vesion['version_id']){
                             $respon = "New version $updated[version_name] available, please update at https://github.com/arizu-id/video-master";
                             sM("[REPLY] To : $chatId -> $respon");
                             sendMessage($chatId, $messageId, $respon);
@@ -126,6 +126,10 @@ if($token == false){
                                 sendMessage2($chatId, $messageId, $respon);
                             }	
                             $addkey = 0;
+
+                            $respon = "By using this service you agree to bear all forms of risk and free the developer from all forms of legal claims, This tool is free and you can download it at https://github.com/arizu-id/video-master";
+                            sM("[REPLY] To : $chatId -> $respon");
+                            sendMessage($chatId, $messageId, $respon);
                         }else
                         if(!file_exists("user/$userid")){
                             $respon = "You're not authorized, please register! run /register [server_key]";
