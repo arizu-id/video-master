@@ -45,7 +45,7 @@ if(!file_exists("files/images/$images")){
     if(downloadFiles($gabol['url'],"tmp/$filename") == true){
         sM("Download Success -> tmp/$filename");
         sM("Editing..");
-        shell_exec('ffmpeg -i tmp/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
+        shell_exec('ffmpeg '.$vga.' -i tmp/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
         if(file_exists("render/$filename")){
             sM("Sending..");
             if(sendStream($chatId, $messageId, "render/$filename") == true){

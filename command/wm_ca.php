@@ -57,13 +57,13 @@ if(!file_exists("files/audio/$audio")){
     if(downloadFiles($gabol['url'],"tmp/$filename") == true){
         sM("Download Success -> tmp/$filename");
         sM("Editing..");
-        shell_exec('ffmpeg -i tmp/'.$filename.' -i files/images/'.$images.' -i files/audio/'.$audio.' -filter_complex "[2]volume='.$volume.'[a2];[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.',[0:a][a2]amix=inputs=2" -c:v libx264 -tune stillimage -c:a mp3 -b:a 192k -pix_fmt yuv420p -shortest -map 0:v:0 tmp2/'.$filename);
+        shell_exec('ffmpeg '.$vga.' -i tmp/'.$filename.' -i files/images/'.$images.' -i files/audio/'.$audio.' -filter_complex "[2]volume='.$volume.'[a2];[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.',[0:a][a2]amix=inputs=2" -c:v libx264 -tune stillimage -c:a mp3 -b:a 192k -pix_fmt yuv420p -shortest -map 0:v:0 tmp2/'.$filename);
         if(file_exists("tmp2/$filename")){
             sM("Add Watermark..");
-            shell_exec('ffmpeg -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" tmp3/'.$filename);
+            shell_exec('ffmpeg '.$vga.' -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" tmp3/'.$filename);
             if(file_exists("tmp3/$filename")){
                 sM("Change Backsound..");
-                shell_exec('ffmpeg -i tmp3/'.$filename.' -i files/audio/'.$audio.' -c:v copy -shortest -map 0:v:0 -map 1:a:0 render/'.$filename);
+                shell_exec('ffmpeg '.$vga.' -i tmp3/'.$filename.' -i files/audio/'.$audio.' -c:v copy -shortest -map 0:v:0 -map 1:a:0 render/'.$filename);
                 if(file_exists("render/$filename")){
                     sM("Sending..");
                     if(sendStream($chatId, $messageId, "render/$filename") == true){

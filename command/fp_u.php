@@ -19,8 +19,8 @@ if(!$caption){
 }else{
     $caption = str_replace('_',' ',$caption);
     $cmmds = 'node modules/reels-uploader/upload.js "files/video/'.$video.'" "'.$caption.'" "data/fb_page/'.$cookies.'.txt"';
-    echo $cmmds.PHP_EOL;
-    shell_exec($cmmds);
+    echo "Executing prompt : ".PHP_EOL;
+    shell_exec($new_window.$cmmds);
 $respon = "Video : `$video`
 Cookies : `$cookies`
 Caption : $caption

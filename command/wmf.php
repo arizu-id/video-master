@@ -46,10 +46,10 @@ if(!file_exists("files/images/$images")){
         sM("Download Success -> tmp/$filename");
         sM("Editing..");
         //shell_exec('ffmpeg -i tmp/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.',hflip" render/'.$filename);
-        shell_exec('ffmpeg -i tmp/'.$filename.' -filter_complex "hflip" tmp2/'.$filename);
+        shell_exec('ffmpeg '.$vga.' -i tmp/'.$filename.' -filter_complex "hflip" tmp2/'.$filename);
         if(file_exists("tmp2/$filename")){
             sM("Add Watermark..");
-            shell_exec('ffmpeg -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
+            shell_exec('ffmpeg '.$vga.' -i tmp2/'.$filename.' -i files/images/'.$images.' -filter_complex "[1]colorchannelmixer=aa='.$opacity.',scale='.$size.':-1[wm];[0][wm]overlay=(main_w-overlay_w)/'.$position_x.':(main_h-overlay_h)/'.$position_y.'" render/'.$filename);
             if(file_exists("render/$filename")){
                 sM("Sending..");
                 if(sendStream($chatId, $messageId, "render/$filename") == true){

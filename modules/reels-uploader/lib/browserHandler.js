@@ -85,7 +85,7 @@ export const ReelsUpload = async (namafile, caption, filecookie) => {
         await delay(2000)
         const fullPath = path.resolve(namafile);
         filechooser.accept([fullPath])
-        printLog(`sukses Upload video ${namafile}.mp4`)
+        printLog(`sukses Upload video ${namafile}`)
         await delay(5000)
         const nextElement = await page.$x(nextButtonSelector);
         await nextElement[0].click()

@@ -1,11 +1,14 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
-$vga_moda = true;
-if($vga_mode == true){
+$vga_mode = 'n';
+if($vga_mode == 'y' or $vga_mode == 'Y'){
     $vga = "-hwaccel cuda";
+}
+if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+    $new_window = "start ";
 }
 cls_force();
 setup:
