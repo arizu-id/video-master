@@ -51,6 +51,7 @@ if($token == false){
         }
     }
     sM("[+] Starting executing command..");
+    $tgl = '0';
     start:
     $terbaru = file_get_contents('terbaru.txt');
     //$terbaru = $terbaru+1;
@@ -73,6 +74,24 @@ if($token == false){
                     sM("[Message] From : $chatId ($username) -> $message");
                     $message = str_replace('  ',' ',$message);
 				    $commandMatches = detectCommand($message);
+                    if($tgl != gmdate("d")){
+                        $ch123 = curl_init();
+                        curl_setopt($ch123, CURLOPT_URL, "https://raw.githubusercontent.com/arizu-id/video-master/main/version.json");
+                        curl_setopt($ch123, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch123, CURLOPT_FOLLOWLOCATION, false);
+                        curl_setopt($ch123, CURLOPT_ENCODING, 'gzip, deflate');
+                        curl_setopt($ch123, CURLOPT_HTTPHEADER, array("Cache-Control: no-cache"));
+                        $response123 = curl_exec($ch123);
+                        curl_close($ch);
+                        $updated = json_decode($response123,true);
+                        $my_vesion = json_decode(file_get_contents('version.json'),true);
+                        if($updated['version_id']>=$my_vesion['version_id']){
+                            $respon = "New version $updated[version_name] available, please update at https://github.com/arizu-id/video-master";
+                            sM("[REPLY] To : $chatId -> $respon");
+                            sendMessage($chatId, $messageId, $respon);
+                        }
+                        $tgl = gmdate("d");
+                    }
                     if (!empty($commandMatches)) {
                         $commandName = $commandMatches[1];
                         $commandArguments = isset($commandMatches[3]) ? $commandMatches[3] : '';					
