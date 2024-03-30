@@ -1,7 +1,6 @@
+![Screenshot](https://arizu.id/blog/wp-content/uploads/2024/02/video-master.jpg)
 <h2 align="center">We present a tool with very useful functions to help your work</h2>
 Video Master is a tool that helps you speed up the time for editing a video, generally if you edit a video from collecting materials or assets to the rendering stage it takes 5-10 minutes at the fastest. However, with this tool you only need 2-5 minutes (depending on your server specifications).
-
-![Screenshot](https://arizu.id/blog/wp-content/uploads/2024/02/video-master.jpg)
 
 ![Screenshot](files/vdmaster.jpg)
 # System Requirements
