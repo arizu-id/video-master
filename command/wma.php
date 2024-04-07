@@ -45,9 +45,9 @@ if(!file_exists("files/audio/$audio")){
     $position_y = 10-$position_y;
     $respon = "Proses..";
     $filename = "videos_".rand(1000,9999)."_".strtotime("now").".mp4";
-    if(file_exists("render/$url_video")){
+    if(file_exists("files/video/$url_video")){
         $gabol = array();
-        $gabol['url'] = "render/$url_video";
+        $gabol['url'] = "files/video/$url_video";
     }else{
         $req = getVideo($url_video);
         $gabol = json_decode($req,true);

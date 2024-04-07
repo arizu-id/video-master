@@ -164,17 +164,21 @@ function getName($uri){
 	$meki = explode('?',$pisah);
 	return $meki[0];
 }
-function downloadFiles($url,$file){
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	$fileContent = curl_exec($ch);
-	if ($fileContent === false) {
-		return false;
-	}else{
-		file_put_contents($file, $fileContent);
-		return true;
-	}
+function downloadFiles($fileContent,$file){
+    if(file_exists($url)){
+        file_put_contents($file, $fileContent);
+    }else{
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $fileContent = curl_exec($ch);
+        if ($fileContent === false) {
+            return false;
+        }else{
+            file_put_contents($file, $fileContent);
+            return true;
+        }
+    }
 }
 function getMessageLatest(){
 	$uri = "https://api.telegram.org/bot" . BOT_TOKEN . "/getUpdates";
