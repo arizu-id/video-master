@@ -225,56 +225,6 @@ Developer : https://arizu.id/";
 return $pesan;
 }
 function helpMessage(){
-$pesan = "Auto Download & Editing Videos
-/download [url]
-/flip [url]
-
-Watermark Module
-/wm [url_video] [opacity] [size] [position_y] [position_x] [images]
-/wma [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/wma_border [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-/wm_ca [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/wmf [url_video] [opacity] [size] [position_y] [position_x] [images]
-/wmfa [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-/wmfa_border [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume] [borderColor] [borderSize]
-/wmf_ca [url_video] [opacity] [size] [position_y] [position_x] [images] [audio] [volume]
-
-Preset Module
-/preset [name] [INPUT_1] [INPUT_2] [INPUT_3] [INPUT_4]
-/preset_sv [name] [command]
-/preset_all
-/preset_send [name]
-/preset_del [name]
-
-Facebook Upload Modules
-/fp_tutorial
-/fp
-/fp_save [name]
-/fp_del [name]
-/fp_u [video] [cookies] [caption]
-
-TikTok Upload Modules
-/tt [name] [video]
-/tt_list
-/tt_get
-/tt_save [name]
-
-List Video Saved on Server
-/storage
-/storageclean
-/storagesend [filename]
-
-List File Thumbnail on Server
-/thumbnaildelete
-/thumbnaillist
-/thumbnailsave [url] [filename]
-/thumbnailsend [filename]
-
-List File Audio on Server
-/audiodelete [filename]
-/audiolist
-/audiosave [url] [filename]
-/audiosend [filename]
-/audioyt [url] [filename]";
+$pesan = "Please read the usage instructions at https://arizu.id/blog/video-master-bot-usage-guide/";
     return $pesan;
 }
