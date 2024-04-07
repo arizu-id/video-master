@@ -164,8 +164,9 @@ function getName($uri){
 	$meki = explode('?',$pisah);
 	return $meki[0];
 }
-function downloadFiles($fileContent,$file){
+function downloadFiles($url,$file){
     if(file_exists($url)){
+        $fileContent = file_get_contents($url);
         file_put_contents($file, $fileContent);
     }else{
         $ch = curl_init($url);
