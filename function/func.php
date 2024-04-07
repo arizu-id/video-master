@@ -168,6 +168,7 @@ function downloadFiles($url,$file){
     if(file_exists($url)){
         $fileContent = file_get_contents($url);
         file_put_contents($file, $fileContent);
+        return true;
     }else{
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
