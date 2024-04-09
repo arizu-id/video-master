@@ -13,5 +13,6 @@ tmp2/
 tmp3/
 render/
 user/
+command_pro/
 command/theme.php
 command/theme_text.php

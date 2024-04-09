@@ -63,6 +63,9 @@ function checkDir(){
     if(!is_dir("tmp")){
         mkdir("tmp");
     }
+    if(!is_dir("command_pro")){
+        mkdir("command_pro");
+    }
     if(!is_dir("tmp2")){
         mkdir("tmp2");
     }
@@ -115,7 +118,33 @@ function getVideo($urlvideo){
 	$bbx['aFormat'] = "mp3";
 	$bbx['filenamePattern'] = "classic";
 	$bbx['dubLang'] = false;
-	$bbx['vQuality'] = "1080";
+	$bbx['vQuality'] = "720";
+	$headers = array();
+	$headers[] = 'Accept:application/json';
+	$headers[] = 'Content-Type:application/json';
+	$headers[] = 'Cache-Control:no-cache';	
+	$ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $uri);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($bbx));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
+	curl_setopt($ch, CURLOPT_TIMEOUT, 99999);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
+function getVideo69($urlvideo){
+	$uri = "https://co.wuk.sh/api/json";
+	$bbx = array();
+	$bbx['url'] = $urlvideo;
+	$bbx['aFormat'] = "mp3";
+	$bbx['filenamePattern'] = "classic";
+	$bbx['dubLang'] = false;
+	$bbx['vQuality'] = "720";
 	$headers = array();
 	$headers[] = 'Accept:application/json';
 	$headers[] = 'Content-Type:application/json';

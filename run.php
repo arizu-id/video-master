@@ -162,8 +162,11 @@ if($token == false){
                         }else
                         if(file_exists("command/$commandName.php")){
                             include "command/$commandName.php";
+                        }else
+                        if(file_exists("command_pro/$commandName.php")){
+                            include "command_pro/$commandName.php";
                         }else{
-                            $respon = "Command file /$commandName not found, try typing /help";
+                            $respon = "Command file /$commandName not found!, try typing /help";
 					        sM("[REPLY] To : $chatId -> $respon");
 					        sendMessage($chatId, $messageId, $respon);
                         }
