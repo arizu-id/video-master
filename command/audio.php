@@ -8,7 +8,7 @@ if(!$video or !$audio or !$volume){
     sendMessage($chatId, $messageId, $respon);
 }else
 if(!file_exists("files/video/$video")){
-    $respon = "Thumbnail not found, try typing /thumbnaillist";
+    $respon = "Video not found, try typing /storage";
     sM("[REPLY] To : $chatId -> $respon");
     sendMessage($chatId, $messageId, $respon);
 }else
