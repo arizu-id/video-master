@@ -1,4 +1,16 @@
 <?php
+function cobaltserv(){
+    return "https://co.wuk.sh/api/json";
+}
+
+
+
+
+
+
+
+
+
 function cls_force(){
     echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
@@ -112,7 +124,7 @@ function detectCommand($text) {
     return $matches;
 }
 function getVideo($urlvideo){
-	$uri = "https://co.wuk.sh/api/json";
+	$uri = cobaltserv();
 	$bbx = array();
 	$bbx['url'] = $urlvideo;
 	$bbx['aFormat'] = "mp3";
@@ -138,7 +150,7 @@ function getVideo($urlvideo){
     return $response;
 }
 function getVideo69($urlvideo){
-	$uri = "https://co.wuk.sh/api/json";
+	$uri = cobaltserv();
 	$bbx = array();
 	$bbx['url'] = $urlvideo;
 	$bbx['aFormat'] = "mp3";
@@ -164,7 +176,7 @@ function getVideo69($urlvideo){
     return $response;
 }
 function getYTMusic($urlvideo){
-	$uri = "https://co.wuk.sh/api/json";
+	$uri = cobaltserv();
 	$bbx = array();
 	$bbx['url'] = $urlvideo;
 	$bbx['aFormat'] = "mp3";
