@@ -147,7 +147,7 @@ function igDownload1($url){
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);	
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
 	curl_setopt($ch, CURLOPT_TIMEOUT, 99999);
-    echo $response = curl_exec($ch);
+    return $response = curl_exec($ch);
 }
 function getVideo($urlvideo){
 	$uri = cobaltserv();
@@ -175,8 +175,18 @@ function getVideo($urlvideo){
     curl_close($ch);
     $parse = parse_url($urlvideo);
     $genada = json_decode($response,true);
-    if(!$genada['url'] && $parse['host'] == 'instagram.com'){
-        $response = igDownload($urlvideo);
+    "[debugger] host : ".$parse['host'].PHP_EOL;
+    if(!isset($genada['url']) && $parse['host'] == 'www.instagram.com'){
+        echo "[debugger] Downloading using api.sssgram.com \n";
+        $responsesdsd = json_decode(igDownload1($urlvideo),true);
+        if(isset($responsesdsd['result']['insBos'][0]['url'])){
+            $response = array();
+            $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
+            $response = json_encode($response);
+            echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
+        }else{
+            echo "[debugger] file url not found \n";
+        }
     }
     return $response;
 }
@@ -206,8 +216,18 @@ function getVideo69($urlvideo){
     curl_close($ch);
     $parse = parse_url($urlvideo);
     $genada = json_decode($response,true);
-    if(!$genada['url'] && $parse['host'] == 'instagram.com'){
-        $response = igDownload($urlvideo);
+    "[debugger] host : ".$parse['host'].PHP_EOL;
+    if(!isset($genada['url']) && $parse['host'] == 'www.instagram.com'){
+        echo "[debugger] Downloading using api.sssgram.com \n";
+        $responsesdsd = json_decode(igDownload1($urlvideo),true);
+        if(isset($responsesdsd['result']['insBos'][0]['url'])){
+            $response = array();
+            $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
+            $response = json_encode($response);
+            echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
+        }else{
+            echo "[debugger] file url not found \n";
+        }
     }
     return $response;
 }
