@@ -10,7 +10,8 @@ if(!$url_videos){
     $proses_pesan = sendMessage($chatId, $messageId, $respon);
     $req = getVideo($url_videos);
     $gabol = json_decode($req,true);
-    sM("[!] Vidio -> $gabol[url]");
+    //sM("[!] Vidio -> $gabol[url]");
+    echo "[debugger] video url $gabol[url]\n";
     $filename = "videos".rand(1000,9999)."_".strtotime("now").".mp4";
     if(downloadFiles($gabol['url'],"tmp/$filename") == true){
         sM("Download Success -> tmp/$filename");

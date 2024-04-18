@@ -1,6 +1,6 @@
 <?php
 function cobaltserv(){
-    return "https://co.wuk.sh/api/json";
+    return "https://us2-co.wuk.sh/api/json";
 }
 
 
@@ -161,6 +161,17 @@ function getVideo($urlvideo){
 	$headers[] = 'Accept:application/json';
 	$headers[] = 'Content-Type:application/json';
 	$headers[] = 'Cache-Control:no-cache';	
+	$headers[] = 'Accept-Encoding: gzip, deflate';
+	$headers[] = 'Accept-Language: en-US,en;q=0.9';
+	$headers[] = 'Origin: https://cobalt.tools';
+	$headers[] = 'Referer: https://cobalt.tools/';
+	$headers[] = 'Sec-Ch-Ua: "Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"';
+	$headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+	$headers[] = 'Sec-Ch-Ua-Platform: "Windows"';
+	$headers[] = 'Sec-Fetch-Dest: empty';
+	$headers[] = 'Sec-Fetch-Mode: cors';
+	$headers[] = 'Sec-Fetch-Site: cross-site';
+	$headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36';
 	$ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -202,6 +213,17 @@ function getVideo69($urlvideo){
 	$headers[] = 'Accept:application/json';
 	$headers[] = 'Content-Type:application/json';
 	$headers[] = 'Cache-Control:no-cache';	
+	$headers[] = 'Accept-Encoding: gzip, deflate';
+	$headers[] = 'Accept-Language: en-US,en;q=0.9';
+	$headers[] = 'Origin: https://cobalt.tools';
+	$headers[] = 'Referer: https://cobalt.tools/';
+	$headers[] = 'Sec-Ch-Ua: "Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"';
+	$headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+	$headers[] = 'Sec-Ch-Ua-Platform: "Windows"';
+	$headers[] = 'Sec-Fetch-Dest: empty';
+	$headers[] = 'Sec-Fetch-Mode: cors';
+	$headers[] = 'Sec-Fetch-Site: cross-site';
+	$headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36';
 	$ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -267,9 +289,24 @@ function downloadFiles($url,$file){
         file_put_contents($file, $fileContent);
         return true;
     }else{
+        $parse = parse_url($url);
+        $headers = array();
+        $headers[] = 'Accept-Encoding: gzip, deflate';
+        $headers[] = 'Accept-Language: en-US,en;q=0.9';
+        $headers[] = 'Origin: https://'.$parse['host'];
+        $headers[] = 'Referer: https://'.$parse['host'];
+        $headers[] = 'Sec-Ch-Ua: "Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"';
+        $headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+        $headers[] = 'Sec-Ch-Ua-Platform: "Windows"';
+        $headers[] = 'Sec-Fetch-Dest: empty';
+        $headers[] = 'Sec-Fetch-Mode: cors';
+        $headers[] = 'Sec-Fetch-Site: cross-site';
+        $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
         $fileContent = curl_exec($ch);
         if ($fileContent === false) {
             return false;
