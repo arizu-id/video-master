@@ -283,7 +283,72 @@ function getName($uri){
 	$meki = explode('?',$pisah);
 	return $meki[0];
 }
+function get_domain($host){
+    $myhost = strtolower(trim($host));
+    $count = substr_count($myhost, '.');
+    if($count === 2){
+      if(strlen(explode('.', $myhost)[1]) > 3) $myhost = explode('.', $myhost, 2)[1];
+    } else if($count > 2){
+      $myhost = get_domain(explode('.', $myhost, 2)[1]);
+    }
+    return $myhost;
+  }
 function downloadFiles($url,$file){
+    $parse = parse_url($url);
+    $genada = json_decode($response,true);
+    $doms = get_domain($parse['host']);
+    if(file_exists($url)){
+        $fileContent = file_get_contents($url);
+        file_put_contents($file, $fileContent);
+        return true;
+    }else
+    if(
+        $doms == 'www.instagram.com' or
+        $doms == 'cdninstagram.com'
+    ){
+        $fp = fopen ($file, 'w+');
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($fp);
+        return true;
+        //echo "asdfgsdfgsdg";
+    }else{
+        $parse = parse_url($url);
+        $headers = array();
+        $headers[] = 'Accept-Encoding: gzip, deflate';
+        $headers[] = 'Accept-Language: en-US,en;q=0.9';
+        $headers[] = 'Origin: https://'.$parse['host'];
+        $headers[] = 'Referer: https://'.$parse['host'];
+        $headers[] = 'Sec-Ch-Ua: "Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"';
+        $headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+        $headers[] = 'Sec-Ch-Ua-Platform: "Windows"';
+        $headers[] = 'Sec-Fetch-Dest: empty';
+        $headers[] = 'Sec-Fetch-Mode: cors';
+        $headers[] = 'Sec-Fetch-Site: cross-site';
+        $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36';
+        $fp = fopen ($file, 'w+');
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        $fileContent = curl_exec($ch);
+        if ($fileContent === false) {
+            return false;
+        }else{
+            //file_put_contents($file, $fileContent);
+            return true;
+        }
+        fclose($fp);
+    }
+}
+function downloadFiles2($url,$file){
+    $parse = parse_url($url);
+    $genada = json_decode($response,true);
     if(file_exists($url)){
         $fileContent = file_get_contents($url);
         file_put_contents($file, $fileContent);
@@ -304,7 +369,7 @@ function downloadFiles($url,$file){
         $headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
         $fileContent = curl_exec($ch);
