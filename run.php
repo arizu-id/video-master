@@ -1,9 +1,9 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 include "function/func.php";
 $token = getToken("configuration.ini");
 include "function/telegram.php";
-$vga_mode = 'y';
+$vga_mode = 'n';
 if($vga_mode == 'y' or $vga_mode == 'Y'){
     $vga = "-hwaccel cuda";
 }
