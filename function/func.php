@@ -149,6 +149,56 @@ function igDownload1($url){
 	curl_setopt($ch, CURLOPT_TIMEOUT, 99999);
     return $response = curl_exec($ch);
 }
+function igDownload2($url){
+    echo "[debugger][vidinsta.app] fetching $url\n";
+	$headers = array();
+	$headers[] = ':authority: vidinsta.app';
+	$headers[] = ':method: POST';
+	$headers[] = ':path: /web/home/fetch';
+	$headers[] = ':scheme: https';
+	$headers[] = 'Accept: text/html, */*; q=0.01';
+	$headers[] = 'Accept-Encoding: gzip, deflate';
+	$headers[] = 'Accept-Language: en-US,en;q=0.9';
+	$headers[] = 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8';
+	$headers[] = 'Cookie: _csrf=600dbed4dd19f1713e8a3f3a82c3994fbe7d8746ae42cc22838532c98051fdd2a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22341hxis4bRHiQ_In5epj469nbb-PAs5R%22%3B%7D; _ga_V3DS4P6657=GS1.1.1720012085.1.0.1720012085.0.0.0; _ga=GA1.1.601728366.1720012086; _ga_C685S7JGC5=GS1.1.1720012085.1.0.1720012092.0.0.0';
+	$headers[] = 'Origin: https://vidinsta.app';
+	$headers[] = 'Priority: u=1, i';
+	$headers[] = 'Referer: https://vidinsta.app/';
+	$headers[] = 'Sec-Ch-Ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"';
+	$headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+	$headers[] = 'Sec-Ch-Ua-Platform: "Windows"';
+	$headers[] = 'Sec-Fetch-Dest: empty';
+	$headers[] = 'Sec-Fetch-Mode: cors';
+	$headers[] = 'Sec-Fetch-Site: same-origin';
+	$headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36';
+	$headers[] = 'X-Csrf-Token: NG05pKyEa-7bufoLtha2dwU4i24Qa_ZlPGg1xnPwW28HWQjM1O0Y2rnrsmLnSf8ZMF37BCRdzwteChiWMoNuPQ==';
+	$headers[] = 'X-Requested-With: XMLHttpRequest';
+	
+    $ch = curl_init("https://vidinsta.app/web/home/fetch");
+    curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, "url=$url&type=");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);	
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0); 
+	curl_setopt($ch, CURLOPT_TIMEOUT, 99999);
+    return $response = curl_exec($ch);
+}
+function igDownload3($url){
+    echo "[debugger][snapinsta.io] fetching $url\n";
+    $headers[] = ':path: /api/ajaxSearch';
+    $headers[] = 'Origin: https://snapinsta.io';
+    $headers[] = 'User-Agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36';	
+    $ch = curl_init("https://snapinsta.io/api/ajaxSearch");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "q=$url&t=media&lang=en");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);	
+    return $response = curl_exec($ch);
+}
 function getVideo($urlvideo){
 	$uri = cobaltserv();
 	$bbx = array();
@@ -188,16 +238,42 @@ function getVideo($urlvideo){
     $genada = json_decode($response,true);
     "[debugger] host : ".$parse['host'].PHP_EOL;
     if(!isset($genada['url']) && $parse['host'] == 'www.instagram.com'){
-        echo "[debugger] Downloading using api.sssgram.com \n";
-        $responsesdsd = json_decode(igDownload1($urlvideo),true);
-        if(isset($responsesdsd['result']['insBos'][0]['url'])){
+
+        
+        echo "[debugger] Downloading using snapinsta.io \n";
+        $responsesdsd = json_decode(igDownload3($urlvideo),true);
+        $links1 = explode('<a href="',$responsesdsd['data']);
+        $links2 = explode('"',$links1[1]);
+        $finalxxx = $links2[0];
+        if(isset($finalxxx)){
             $response = array();
-            $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
+            $response['url'] = $finalxxx;
             $response = json_encode($response);
-            echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
+            echo "[debugger] file url ".$finalxxx." \n";
         }else{
-            echo "[debugger] file url not found \n";
+            echo "[debugger] Downloading using api.sssgram.com \n";
+            $responsesdsd = json_decode(igDownload1($urlvideo),true);
+            if(isset($responsesdsd['result']['insBos'][0]['url'])){
+                $response = array();
+                $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
+                $response = json_encode($response);
+                echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
+            }else{
+                echo "[debugger] Downloading using vidinsta.app \n";
+                $bkn = igDownload2($urlvideo);
+                $bbh = explode('btn btn-download" href="',$bkn);
+                $bbah = explode('"',$bbh[1]);
+                if(isset($bbah[0])){
+                    $response = array();
+                    $response['url'] = "https://vidinsta.app".$bbah[0];
+                    $response = json_encode($response);
+                    echo "[debugger] file url https://vidinsta.app".$bbah[0]." \n";
+                }else{
+                    echo "[debugger] file url not found \n";
+                }
+            }
         }
+        
     }
     return $response;
 }
@@ -295,7 +371,6 @@ function get_domain($host){
   }
 function downloadFiles($url,$file){
     $parse = parse_url($url);
-    $genada = json_decode($response,true);
     $doms = get_domain($parse['host']);
     if(file_exists($url)){
         $fileContent = file_get_contents($url);
@@ -348,7 +423,6 @@ function downloadFiles($url,$file){
 }
 function downloadFiles2($url,$file){
     $parse = parse_url($url);
-    $genada = json_decode($response,true);
     if(file_exists($url)){
         $fileContent = file_get_contents($url);
         file_put_contents($file, $fileContent);
@@ -430,6 +504,8 @@ Developer : https://arizu.id/";
 return $pesan;
 }
 function helpMessage(){
-$pesan = "Please read the usage instructions at https://arizu.id/blog/video-master-bot-usage-guide/";
+$pesan = "Please read the usage instructions at https://arizu.id/blog/video-master-bot-usage-guide/
+
+Interested in hiring developers? contact us at https://arizu.id/contact";
     return $pesan;
 }
