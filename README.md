@@ -8,6 +8,12 @@ Video Master is a tool that helps you speed up the time for editing a video, gen
 - NodeJS 20<br/>
 - Python 3<br/>
 - FFMpeg binaries<br/>
+
+# Usage for IG Uploader
+- install composer
+- run command ```composer require mgp25/instagram-php```
+- change file ```config.example.php``` to ```config.php```
+
 # How to Install Video Master
 Read this article <a href="https://arizu.id/blog/video-master-bot-usage-guide/">Installation & Usage Guide for Video Master</a>
 
