@@ -244,8 +244,8 @@ function getVideo($urlvideo){
         $responsesdsd = json_decode(igDownload3($urlvideo),true);
         $links1 = explode('<a href="',$responsesdsd['data']);
         $links2 = explode('"',$links1[1]);
-        $finalxxx = $links2[0];
-        if(isset($finalxxx)){
+        $finalxxx = trim($links2[0]);
+        if($finalxxx != '' or $finalxxx != ' '){
             $response = array();
             $response['url'] = $finalxxx;
             $response = json_encode($response);
