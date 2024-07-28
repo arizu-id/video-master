@@ -185,6 +185,37 @@ function igDownload2($url){
 	curl_setopt($ch, CURLOPT_TIMEOUT, 99999);
     return $response = curl_exec($ch);
 }
+function downloadIG($linksxx){
+	$linksxx = str_replace('https://www.instagram.com/p/','',$linksxx);
+	$linksxx = str_replace('https://www.instagram.com/reels/','',$linksxx);
+	$bjirgoh = explode('/',$linksxx);
+	$post_id = $bjirgoh[0];
+	$link = "https://www.instagram.com/p/$post_id/embed";
+	$headers = array();
+	$headers[] = 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7';	
+	$headers[] = "Accept-Encoding: gzip, deflate";
+	$headers[] = "Sec-Fetch-Mode: navigate";
+	$headers[] = "Connection: keep-alive";
+	$headers[] = "Sec-Fetch-User: ?1";
+	$headers[] = "Host: www.instagram.com";
+	$headers[] = "Sec-Fetch-Site: none";
+	$headers[] = "Sec-Fetch-Dest: document";
+	$headers[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+	$headers[] = "Accept-Language: en-US,en;q=0.9";
+	$ch = curl_init($link);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);	
+    $response = curl_exec($ch);
+    curl_close($ch);
+	$pisah1 = explode('"video_url\":\"',$response);
+	$pisah2 = explode('"',$pisah1[1]);
+	$links = trim($pisah2[0]);
+	$links = str_replace('\\','',$links);
+	$links = str_replace('u0025','%',$links);
+	return $links;
+}
 function igDownload3($url){
     echo "[debugger][snapinsta.io] fetching $url\n";
     $headers[] = ':path: /api/ajaxSearch';
@@ -239,41 +270,67 @@ function getVideo($urlvideo){
     "[debugger] host : ".$parse['host'].PHP_EOL;
     if(!isset($genada['url']) && $parse['host'] == 'www.instagram.com'){
 
-        
-        echo "[debugger] Downloading using snapinsta.io \n";
-        $responsesdsd = json_decode(igDownload3($urlvideo),true);
-        $links1 = explode('<a href="',$responsesdsd['data']);
-        $links2 = explode('"',$links1[1]);
-        $finalxxx = trim($links2[0]);
-        if($finalxxx != '' or $finalxxx != ' '){
+        echo "[debugger] Downloading directly to instagram \n";
+        $bijink = downloadIG($urlvideo);
+        if($bijink != '' or $bijink != ' '){
             $response = array();
-            $response['url'] = $finalxxx;
+            $response['url'] = $bijink;
             $response = json_encode($response);
-            echo "[debugger] file url ".$finalxxx." \n";
+            echo "[debugger] file url ".$bijink." \n";
         }else{
-            echo "[debugger] Downloading using api.sssgram.com \n";
-            $responsesdsd = json_decode(igDownload1($urlvideo),true);
-            if(isset($responsesdsd['result']['insBos'][0]['url'])){
+            echo "[debugger] Downloading using snapinsta.io \n";
+            $responsesdsd = json_decode(igDownload3($urlvideo),true);
+            $links1 = explode('<a href="',$responsesdsd['data']);
+            $links2 = explode('"',$links1[1]);
+            $finalxxx = trim($links2[0]);
+            if($finalxxx != '' or $finalxxx != ' '){
                 $response = array();
-                $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
+                $response['url'] = $finalxxx;
                 $response = json_encode($response);
-                echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
+                echo "[debugger] file url ".$finalxxx." \n";
             }else{
-                echo "[debugger] Downloading using vidinsta.app \n";
-                $bkn = igDownload2($urlvideo);
-                $bbh = explode('btn btn-download" href="',$bkn);
-                $bbah = explode('"',$bbh[1]);
-                if(isset($bbah[0])){
+                echo "[debugger] Downloading using api.sssgram.com \n";
+                $responsesdsd = json_decode(igDownload1($urlvideo),true);
+                if(isset($responsesdsd['result']['insBos'][0]['url'])){
                     $response = array();
-                    $response['url'] = "https://vidinsta.app".$bbah[0];
+                    $response['url'] = $responsesdsd['result']['insBos'][0]['url'];
                     $response = json_encode($response);
-                    echo "[debugger] file url https://vidinsta.app".$bbah[0]." \n";
+                    echo "[debugger] file url ".$responsesdsd['result']['insBos'][0]['url']." \n";
                 }else{
-                    echo "[debugger] file url not found \n";
+                    echo "[debugger] Downloading using vidinsta.app \n";
+                    $bkn = igDownload2($urlvideo);
+                    $bbh = explode('btn btn-download" href="',$bkn);
+                    $bbah = explode('"',$bbh[1]);
+                    if(isset($bbah[0])){
+                        $response = array();
+                        $response['url'] = "https://vidinsta.app".$bbah[0];
+                        $response = json_encode($response);
+                        echo "[debugger] file url https://vidinsta.app".$bbah[0]." \n";
+                    }else{
+                        echo "[debugger] file url not found \n";
+                    }
                 }
             }
         }
-        
+    }else
+    if(!isset($genada['url']) && $parse['host'] == 'www.tiktok.com'){
+        echo "[debugger] Downloading from markdevs-last-api.onrender.com \n";
+        $ch = curl_init("https://markdevs-last-api.onrender.com/api/tiktokdl?link=$urlvideo");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);	
+        $response = curl_exec($ch);
+        $deguder = json_decode($response,true);
+        $bjigur = $deguder['url'];
+        if(isset($bjigur)){
+            $response = array();
+            $response['url'] = $bjigur;
+            $response = json_encode($response);
+            echo "[debugger] file url $bjigur \n";
+        }else{
+            echo "[debugger] file url not found \n";
+        }
     }
     return $response;
 }
